@@ -1,0 +1,144 @@
+###$###
+1. Java Code:
+class Solution {
+    public int longestPalindrome(String s) {
+        int[] count = new int[128];
+        for (char c : s.toCharArray()) {
+            count[c]++;
+        }
+        int ans = 0;
+        for (int v : count) {
+            ans += v / 2 * 2;
+            if (ans % 2 == 0 && v % 2 == 1) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Solution sObj = new Solution();
+        String s = "abccccdd";
+        int out = sObj.longestPalindrome(s);
+        System.out.println(out);
+    }
+}
+
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+class Solution {
+
+    public int longestPalindrome(String s);
+
+    public static void main(String[] args);
+
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+class Solution:
+
+    def longestPalindrome(s):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+1. Python Code:
+class Solution:
+    def longestPalindrome(s):
+        count = [0] * 128
+        for char in s:
+            count[ord(char)] += 1
+        
+        ans = 0
+        for v in count:
+            ans += (v // 2) * 2
+            if ans % 2 == 0 and v % 2 == 1:
+                ans += 1
+        
+        return ans
+
+if __name__ == "__main__":
+    sObj = Solution()
+    s = "abccccdd"
+    out = sObj.longestPalindrome(s)
+    print(out)
+
+###$###
+2. Java Code:
+class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {
+        int[] res = new int[queries.length];
+        int[] q;
+
+        for (int i = 1; i < arr.length; i++) {
+            arr[i] ^= arr[i - 1];
+        }
+
+        for (int i = 0; i < queries.length; i++) {
+            q = queries[i];
+            res[i] = q[0] > 0 ? arr[q[0] - 1] ^ arr[q[1]] : arr[q[1]];
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Solution sObj = new Solution();
+        int[] arr = {1, 3, 4, 8};
+        int[][] queries = {{0, 1}, {1, 2}, {0, 3}, {3, 3}};
+        int[] out = sObj.xorQueries(arr, queries);
+        System.out.println(Arrays.toString(out));
+    }
+}
+
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+class Solution {
+
+    public int[] xorQueries(int[] arr, int[][] queries);
+
+    public static void main(String[] args);
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+class Solution:
+
+    def xorQueries(self, arr, queries):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+2. Python Code:
+class Solution:
+    def xorQueries(self, arr, queries):
+        res = [0] * len(queries)
+        q=[]
+        for i in range(1, len(arr)):
+            arr[i] ^= arr[i - 1]
+        
+        for i in range(len(queries)):
+            q =queries[i]
+            if q[0] > 0:
+                res[i] = arr[q[0] - 1] ^ arr[q[1]]
+            else:
+                res[i] = arr[q[1]]
+
+        return res
+
+if __name__ == "__main__":
+    sObj = Solution()
+    arr = [1, 3, 4, 8]
+    queries = [[0, 1], [1, 2], [0, 3], [3, 3]]
+    out = sObj.xorQueries(arr, queries)
+    print(out)
+
+###$###
+3. Java Code:

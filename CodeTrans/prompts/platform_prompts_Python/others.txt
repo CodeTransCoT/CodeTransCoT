@@ -1,0 +1,326 @@
+###$###
+1. Python Code:
+l = [ ]
+limit = 10000000000
+def gen ( number , four , seven ) :
+    global debug
+    debug = True
+    status = "bad"
+    if ( number > limit ) :
+        return
+    if ( number > 0 and four == seven ) :
+        l.append ( number )
+    gen ( number * 10 + 4 , four + 1 , seven )
+    gen ( number * 10 + 7 , four , seven + 1 )
+
+debug= False
+status = "good"
+def main_helper ( ) :
+    gen ( 0 , 0 , 0 )
+    l.sort ( )
+    n = int ( input ( ) )
+    ans = 0
+    for val in l :
+        if ( val >= n ) :
+            ans = val
+            break
+    print ( ans )
+
+if __name__ == "__main__" :
+    main_helper()
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify global variables and their types. Global variables are variables that are not inside scope of function and class declarations, present in the above Python Code-
+Global variables: l, limit, debug, status
+
+Step 2: Identify classes and functions declarations present in the above Python Code-
+Identified classes and functions declarations in the Python code:
+def gen ( number , four , seven ) :
+
+def main_helper ( ) :
+
+if __name__ == "__main__" :
+
+Step 3: Considering Step 1 and Step 2, the corresponding Java Code should have declarations of these classes, functions and Global variables -
+Identified classes, functions and Global variables declarations in the Java code:
+public class Main {
+    static ArrayList<Long> l;
+    static long limit;
+    static boolean debug;
+    static String status;
+
+    public static void gen(long number, int four, int seven);
+
+    public static void main_helper();
+
+    public static void main ( String [ ] args );
+
+}
+
+Step 4: Complete translation of the above Python code to Java code by considering identified classes, functions and Global variables declarations in Step 3. While generating the Java code, keep track of required library imports to be added in the Java Code. Make sure your generated code is syntactically correct-
+1. Java Code:
+import java.util.*;
+
+public class Main {
+    static ArrayList<Long> l;
+    static long limit;
+    static boolean debug;
+    static String status;
+
+    public static void gen(long number, int four, int seven) {
+        Main.debug = true;
+        String status = "bad";
+        if (number > limit) return;
+        if (number > 0 && four == seven) {
+            l.add(number);
+        }
+        gen(number * 10 + 4, four + 1, seven);
+        gen(number * 10 + 7, four, seven + 1);
+    }
+
+    public static void main_helper() {
+        gen(0, 0, 0);
+        Collections.sort(l);
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        long ans = 0;
+        for (long val : l) {
+            if (val >= n) {
+                ans = val;
+                break;
+            }
+        }
+        System.out.println(ans);
+    }
+
+    public static void main(String[] args) {
+        l = new ArrayList<>();
+        limit = 10000000000L;
+        debug = false; 
+        status = "good"; 
+
+        main_helper();
+    }
+}
+
+###$###
+2. Python Code:
+class BIT :
+    def __init__ ( self , N ) :
+        self.size = N
+        self.tree = [ 0 ] * ( N + 1 )
+        self.depth = n.bit_length ( )
+    def _bitsum ( self , i ) :
+        ret = 0
+        while i :
+            ret += self.tree [ i ]
+            i ^= i & - i
+        return ret
+    def bitsum ( self , l , r = None ) :
+        if r is None :
+            return self._bitsum ( l )
+        else :
+            return self._bitsum ( r ) - self._bitsum ( l )
+    def bitadd ( self , i , x ) :
+        i += 1
+        while i <= self.size :
+            self.tree [ i ] += x
+            i += i & - i
+        return
+n = int ( input ( ) )
+m = n * ( n + 1 ) // 4
+a = list ( map ( int , input ( ).split ( ) ) )
+d = dict ( )
+_a = sorted ( set ( a + [ 0 ] ) )
+for i , x in enumerate ( _a ) :
+    d [ x ] = i
+a = [ d [ x ] for x in a ]
+def check ( X ) :
+    b = [ 0 ] + [ ( y >= X ) * 2 - 1 for y in a ]
+    for i in range ( n ) :
+        b [ i + 1 ] += b [ i ]
+    c = min ( b )
+    b = [ x - c for x in b ]
+    bit = BIT ( max ( b ) + 2 )
+    ans = 0
+    for x in b :
+        ans += bit.bitsum ( x + 1 )
+        bit.bitadd ( x , 1 )
+    return ans >= m
+t = [ len ( _a ) , 0 ]
+while t [ 0 ] - t [ 1 ] > 1 :
+    mid = ( t [ 0 ] + t [ 1 ] ) // 2
+    t [ check ( mid ) ] = mid
+print ( _a [ t [ 1 ] ] )
+
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify global variables and their types. Global variables are variables that are not inside scope of function and class declarations, present in the above Python Code-
+Global variables: n, m, a, d, _a, t
+
+Step 2: Identify classes and functions declarations present in the above Python Code-
+Identified classes and functions declarations in the Python code:
+class BIT :
+    def __init__ ( self , N ) :
+        self.size = N
+        self.tree = [ 0 ] * ( N + 1 )
+        self.depth = N.bit_length ( )
+
+    def _bitsum ( self , i ) :
+
+    def bitsum ( self , l , r = None ) :
+
+    def bitadd ( self , i , x ) :
+
+def check ( X ) :
+
+
+Step 3: Considering Step 1 and Step 2, the corresponding Java Code should have declarations of these classes, functions and Global variables -
+Identified classes, functions and Global variables declarations in the Java code:
+public class Main {
+    static int n;
+    static long m;
+    static int[] a;
+    static Map<Integer, Integer> d;
+    static List<Integer> _a;
+    static int[] t;
+
+    public static class BIT {
+        public int size;
+        public long [] tree;
+        public int depth;
+
+        public BIT(int N);
+
+        public long _bitsum(int i);
+
+        public long bitsum(int l, int r);
+
+        public long bitsum(int l);
+
+        public void bitadd(int i, int x);
+
+        }
+
+    public static boolean check(int X);
+
+    public static void main ( String [ ] args );
+
+}
+
+Step 4: Complete translation of the above Python code to Java code by considering identified classes, functions and Global variables declarations in Step 3. While generating the Java code, keep track of required library imports to be added in the Java Code. Make sure your generated code is syntactically correct-
+2. Java Code:
+import java.util.*;
+import java.io.*;
+import java.util.stream.Collectors;
+
+public class Main{
+    static int n;
+    static long m;
+    static int[] a;
+    static Map<Integer, Integer> d;
+    static List<Integer> _a;
+    static int[] t;
+
+    public static class BIT {
+        public int size;
+        public long [] tree;
+        public int depth;
+
+        public BIT(int N) {
+            this.size = N;
+            this.tree = new long[N + 1];
+            this.depth = Integer.toBinaryString(N).length();
+        }
+
+        public long _bitsum(int i) {
+            long ret = 0;
+            while (i > 0) {
+                ret += this.tree[i];
+                i ^= i & -i;
+            }
+            return ret;
+        }
+
+        public long bitsum(int l, int r) {
+            return this._bitsum(r) - this._bitsum(l);
+        }
+
+        public long bitsum(int l) {
+            return this._bitsum(l);
+        }
+
+        public void bitadd(int i, int x) {
+            i += 1;
+            while (i <= this.size) {
+                this.tree[i] += x;
+                i += i & -i;
+            }
+            return;
+        }
+    }
+
+
+    public static boolean check(int X) {
+        int[] b = new int[n + 1];
+        b[0] = 0;
+        for (int i = 0; i < n; i++) {
+            b[i + 1] = (a[i] >= X ? 2 : 0) - 1;
+        }
+        for (int i = 0; i < n; i++) {
+            b[i + 1]+= b[i];
+        }
+        int c = Arrays.stream(b).min().getAsInt();
+        for (int i = 0; i < b.length; i++) {
+            b[i] -= c;
+        }
+        BIT bit = new BIT(Arrays.stream(b).max().getAsInt() + 2);
+        long ans = 0;
+        for (int x : b) {
+            ans += (long) bit.bitsum(x + 1);
+            bit.bitadd(x, 1);
+        }
+        return ans >= m;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        n = scanner.nextInt();
+        m = (long) n * (n + 1) / 4;
+        a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = scanner.nextInt();
+        }
+        d = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        for (int x : a) {
+            set.add(x);
+        }
+        set.add(0);
+        _a = new ArrayList<>(set);
+        Collections.sort(_a);
+        for (int i = 0; i < _a.size(); i++) {
+            d.put(_a.get(i), i);
+        }
+        for (int i = 0; i < a.length; i++) {
+            a[i] = d.get(a[i]);
+        }
+
+        t = new int[]{ _a.size(), 0 };
+
+        while (t[0] - t[1] > 1) {
+            int mid = (t[0] + t[1]) / 2;
+            if (check(mid)) {
+                t[1] = mid;
+            } else {
+                t[0] = mid;
+            }
+        }
+        System.out.println(_a.get(t[1]));
+    }
+}
+
+###$###
+3. Python Code:

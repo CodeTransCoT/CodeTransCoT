@@ -1,0 +1,179 @@
+###$###
+1. Java Code:
+import java.io.BufferedReader ; 
+import java.io.IOException ; 
+import java.io.InputStreamReader ; 
+import java.util.* ; 
+
+public class Main {
+    public static void main(String[] args) {
+        FastScanner input = new FastScanner();
+        int n = input.nextInt();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < n; i++) {
+            int val = input.nextInt();
+            map.put(val, map.getOrDefault(val, 0) + 1);
+        }
+        
+        int max = Integer.MIN_VALUE;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            Integer value = entry.getValue();
+            max = Math.max(max, value);
+        }
+        
+        System.out.println(max + " " + map.size());
+    }
+
+    static class FastScanner {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer("");
+
+        String next() {
+            while (!st.hasMoreTokens()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+
+        double nextDouble() {
+            return Double.parseDouble(next());
+        }
+
+        String nextLine() throws IOException {
+            return br.readLine();
+        }
+    }
+}
+
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public class Main { 
+    public static void main ( String [ ] args );
+    static class FastScanner { 
+        String next ( );
+        int nextInt ( );
+        long nextLong ( );
+        double nextDouble ( );
+        String nextLine ( ) throws IOException; 
+    }
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+class FastScanner:
+    def __init__(self):
+
+    def has_next(self):
+
+    def next_int(self):
+
+    def next_str(self):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+1. Python Code:
+import sys
+
+class FastScanner:
+    def __init__(self):
+        self.buf = sys.stdin.readline
+        self.tokens = None
+
+    def has_next(self):
+        while self.tokens is None or len(self.tokens) == 0:
+            self.tokens = self.buf().split()
+        #some warning need if no input or below line 
+        if (self.tokens is None or len(self.tokens) == 0):
+            return False
+        return True
+
+    def next_int(self):
+        if not self.has_next():
+            return None
+        val = self.tokens.pop(0)
+        return int(val)
+
+    def next_str(self):
+        if not self.has_next():
+            return None
+        val = self.tokens.pop(0)
+        return val
+
+if __name__ == "__main__":
+    input = FastScanner()
+    n = input.next_int()
+    map = {}
+    for i in range(n):
+        val = input.next_int()
+        map[val] = map.get(val, 0) + 1
+    max = -1
+    for entry in map.items():
+        value = entry[1]
+        max = max if max > value else value
+    print(max, len(map))
+
+###$###
+2. Java Code:
+import java.util.Scanner ;
+
+public class Main {
+    public static void main ( String [ ] args ) {
+        Scanner in_ = new Scanner ( System.in ) ;
+        int F = in_.nextInt ( ) ;
+        int T = in_.nextInt ( ) ;
+        int S = in_.nextInt ( ) ;
+        int q = in_.nextInt ( ) ;
+        long previous = S ;
+        int answer = 0 ; 
+        while ( previous < T ) {
+            answer ++ ; previous *= q ; 
+        }
+        answer*=F;
+        System.out.println ( answer ) ; 
+} }
+
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public class Main {
+    public static void main ( String [ ] args );
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+2. Python Code:
+if __name__ == "__main__":
+    F=int(input().strip())
+    T , S , q = map ( int , input ( ).split ( ) )
+    previous = S
+    answer = 0
+    while ( previous < T ):
+        answer+=1
+        previous *= q
+    answer*=F
+    print( answer )
+
+###$###
+3. Java Code:

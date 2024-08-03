@@ -1,0 +1,156 @@
+###$###
+1. Python Code:
+class Solution ( object ) :
+    def numJewelsInStones ( self , J , S ) :
+        if len ( J ) == 0 or len ( S ) == 0 :
+            return 0
+        j_set = set ( J )
+        ans = 0
+        for c in S :
+            if c in j_set :
+                ans += 1
+        return ans
+if __name__ == "__main__" :
+    sObj = Solution ( )
+    J = " aA "
+    S = " aAAbbbb "
+    out = sObj . numJewelsInStones ( J , S )
+    print ( out )
+
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify global variables and their types. Global variables are variables that are not inside scope of function and class declarations, present in the above Python Code-
+Global variables: sObj, J, S out
+
+Step 2: Identify classes and functions declarations present in the above Python Code-
+Identified classes and functions declarations in the Python code:
+class Solution ( object ) :
+    def numJewelsInStones ( self , J , S ) :
+
+if __name__ == "__main__" :
+
+Step 3: Considering Step 1 and Step 2, the corresponding Java Code should have declarations of these classes, functions and Global variables -
+Identified classes, functions and Global variables declarations in the Java code:
+public class Solution {
+    static String J;
+    static String S;
+    
+    public static int numJewelsInStones(String J, String S);
+
+    public static void main ( String [ ] args );
+
+}
+
+Step 4: Complete translation of the above Python code to Java code by considering identified classes, functions and Global variables declarations in Step 3. While generating the Java code, keep track of required library imports to be added in the Java Code. Make sure your generated code is syntactically correct-
+1. Java Code:
+import java.util.*;
+
+public class Solution{
+    static String J;
+    static String S;
+    static Solution sObj;
+    static int out;
+    
+    public static int numJewelsInStones(String J, String S) {
+        if (J.length() == 0 || S.length() == 0) {
+            return 0;
+        }
+        Set<Character> j_set = new HashSet<>();
+        for (char c : J.toCharArray()) {
+            j_set.add(c);
+        }
+        int ans = 0;
+        for (char c : S.toCharArray()) {
+            if (j_set.contains(c)) {
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        sObj = new Solution();
+        J = " aA ";
+        S = " aAAbbbb ";
+        out = sObj.numJewelsInStones(J, S);
+        System.out.println(out);
+    }
+}
+
+###$###
+2. Python Code:
+class Solution :
+    def xorQueries ( self , arr , queries ) :
+        pref = [ 0 ]
+        for e in arr :
+            pref . append ( e ^ pref [ - 1 ] )
+        ans = [ ]
+        for [ l , r ] in queries :
+            ans . append ( pref [ r + 1 ] ^ pref [ l ] )
+        return ans
+if __name__ == "__main__" :
+    sObj = Solution ( )
+    arr = [ 1 , 3 , 4 , 8 ]
+    queries = [ [ 0 , 1 ] , [ 1 , 2 ] , [ 0 , 3 ] , [ 3 , 3 ] ]
+    out = sObj . xorQueries ( arr , queries )
+    print ( out )
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify global variables and their types. Global variables are variables that are not inside scope of function and class declarations, present in the above Python Code-
+Global variables: sObj, arr, queries, out
+
+Step 2: Identify classes and functions declarations present in the above Python Code-
+Identified classes and functions declarations in the Python code:
+class Solution :
+    def xorQueries ( self , arr , queries ) :
+
+if __name__ == "__main__" :
+
+Step 3: Considering Step 1 and Step 2, the corresponding Java Code should have declarations of these classes, functions and Global variables -
+Identified classes, functions and Global variables declarations in the Java code:
+public class Main {
+    static Solution sObj;
+    static int[] arr;
+    static int[][] queries;
+    static int out;
+
+    public int[] xorQueries(int[] arr, int[][] queries);
+
+    public static void main ( String [ ] args );
+
+}
+
+Step 4: Complete translation of the above Python code to Java code by considering identified classes, functions and Global variables declarations in Step 3. While generating the Java code, keep track of required library imports to be added in the Java Code. Make sure your generated code is syntactically correct-
+2. Java Code:
+import java.util.Arrays;
+
+public class Solution {
+    public int[] xorQueries(int[] arr, int[][] queries) {
+        int[] pref = new int[arr.length + 1];
+        pref[0] = 0;
+        for (int i = 1; i <= arr.length; i++) {
+            pref[i] = arr[i - 1] ^ pref[i - 1];
+        }
+
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int l = queries[i][0];
+            int r = queries[i][1];
+            ans[i] = pref[r + 1] ^ pref[l];
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        Solution sObj = new Solution();
+        int[] arr = {1, 3, 4, 8};
+        int[][] queries = {{0, 1}, {1, 2}, {0, 3}, {3, 3}};
+        int[] out = sObj.xorQueries(arr, queries);
+        System.out.println(Arrays.toString(out));
+    }
+}
+
+###$###
+3. Python Code:

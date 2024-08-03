@@ -1,0 +1,131 @@
+###$###
+1. Java Code:
+public final class Main {
+  public static void main ( String [ ] args ) {
+    System . out . println ( new Main ( ) . run ( ) ) ;
+  }
+  public String run ( ) {
+    int sum = 0 ;
+    for ( int i = 0 ;i < 1000 ;i ++ ) {
+      if ( i % 3 == 0 || i % 5 == 0 ) sum += i ;
+    }
+    return Integer . toString ( sum ) ;
+  }
+}
+
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public final class Main {
+
+  public static void main ( String [ ] args );
+
+    public String run ( );
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+class Main:
+
+    def main(self):
+
+    def run(self):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+1. Python Code:
+class Main:
+    def main(self):
+        print(self.run())
+
+    def run(self):
+        sum = 0
+        for i in range(1000):
+            if i % 3 == 0 or i % 5 == 0:
+                sum += i
+        return str(sum)
+
+if __name__ == "__main__":
+    Main().main()
+
+###$###
+2. Java Code:
+public final class  Main{
+  public static void main ( String [ ] args ) {
+    System . out . println ( new Main ( ) . run ( ) ) ;
+  }
+  public String run ( ) {
+    int count = 0 ;
+    for ( int y = 1901 ;y <= 2000 ;y ++ ) {
+      for ( int m = 1 ;m <= 12 ;m ++ ) {
+        if ( dayOfWeek ( y , m , 1 ) == 0 ) count ++ ;
+      }
+    }
+    return Integer . toString ( count ) ;
+  }
+  private static int dayOfWeek ( int year , int month , int day ) {
+    if ( year < 0 || year > 10000 || month < 1 || month > 12 || day < 1 || day > 31 ) throw new IllegalArgumentException ( ) ;
+    int m = ( month - 3 + 4800 ) % 4800 ;
+    int y = ( year + m / 12 ) % 400 ;
+    m %= 12 ;
+    return ( y + y / 4 - y / 100 + ( 13 * m + 2 ) / 5 + day + 2 ) % 7 ;
+  }
+}
+
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public final class  Main{
+
+    public static void main ( String [ ] args );
+
+    public String run ( );
+
+    private static int dayOfWeek ( int year , int month , int day );
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+class Main:
+    def main(self):
+
+    def run(self):
+
+    @staticmethod
+    def day_of_week(year, month, day):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+2. Python Code:
+class Main:
+    def main(self):
+        print(self.run())
+
+    def run(self):
+        count = 0
+        for y in range(1901, 2001):
+            for m in range(1, 13):
+                if self.day_of_week(y, m, 1) == 0:
+                    count += 1
+        return str(count)
+
+    @staticmethod
+    def day_of_week(year, month, day):
+        if year < 0 or year > 10000 or month < 1 or month > 12 or day < 1 or day > 31:
+            raise ValueError("Invalid date")
+        m = (month - 3 + 4800) % 4800
+        y = (year + m // 12) % 400
+        m %= 12
+        return (y + y // 4 - y // 100 + (13 * m + 2) // 5 + day + 2) % 7
+
+if __name__ == "__main__":
+    Main.main()
+    
+###$###
+3. Java Code:

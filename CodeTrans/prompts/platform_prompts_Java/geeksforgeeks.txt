@@ -1,0 +1,112 @@
+###$###
+1. Java Code:
+import java.util.*;
+
+public class Main {
+    static int nthTerm(int n) {
+        return (int) Math.pow(n, 2) + 2 * n + 2;
+    }
+
+    public static void main(String[] args) {
+        int N = 4;
+        System.out.println(nthTerm(N));
+    }
+}
+
+
+1. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public class Main {
+
+    static int nthTerm(int n);
+    
+    public static void main ( String [ ] args );
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+def nthTerm(n):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+1. Python Code:
+from math import *
+
+def nthTerm(n):
+    return pow(n, 2) + 2 * n + 2
+
+if __name__ == "__main__":
+    N = 4
+    print(nthTerm(N))
+
+###$###
+2. Java Code:
+public class Main { 
+    static int minSum(int arr[], int n, int x) { 
+        int sum = 0; 
+        int largestDivisible = -1, minimum = arr[0]; 
+        for (int i = 0; i < n; i++) { 
+            sum += arr[i]; 
+            if (arr[i] % x == 0 && largestDivisible < arr[i]) 
+                largestDivisible = arr[i]; 
+            if (arr[i] < minimum) 
+                minimum = arr[i]; 
+        } 
+        if (largestDivisible == -1) 
+            return sum; 
+        int sumAfterOperation = sum - minimum - largestDivisible + (x * minimum) + (largestDivisible / x); 
+        return Math.min(sum, sumAfterOperation); 
+    } 
+
+    public static void main(String[] args) { 
+        int arr[] = {5, 5, 5, 5, 6}; 
+        int n = arr.length; 
+        int x = 3; 
+        System.out.println(minSum(arr, n, x)); 
+    } 
+}
+
+
+2. Steps: Let's think step by step.
+
+Step 1: First of all identify classes and functions declarations present in the above Java Code-
+Identified classes and functions declarations in the Java code:
+public class Main {
+    static int minSum(int arr[], int n, int x); 
+    
+    public static void main ( String [ ] args );
+}
+
+Step 2: Considering Step 1, classes and functions declarations should be presented in the corresponding Python Code-
+Identified classes and functions declarations in the Python code:
+def minSum(arr, n, x):
+
+if __name__ == "__main__":
+
+Step 3: Complete translation of the above Java code to Python code by considering identified classes and functions declarations in Step 2. While generating the Python code, keep track of required library imports to be added in the Python Code. Make sure your generated code is syntactically correct-
+2. Python Code:
+def minSum(arr, n, x):
+    Sum = 0
+    largestDivisible, minimum = -1, arr[0]
+    for i in range(0, n):
+        Sum += arr[i]
+        if arr[i] % x == 0 and largestDivisible < arr[i]:
+            largestDivisible = arr[i]
+        if arr[i] < minimum:
+            minimum = arr[i]
+    if largestDivisible == -1:
+        return Sum
+    sumAfterOperation = Sum - minimum - largestDivisible + (x * minimum) + (largestDivisible // x)
+    return min(Sum, sumAfterOperation)
+
+if __name__ == "__main__":
+    arr = [5, 5, 5, 5, 6]
+    n = len(arr)
+    x = 3
+    print(minSum(arr, n, x))
+
+###$###
+3. Java Code:
