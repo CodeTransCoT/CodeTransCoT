@@ -10,7 +10,15 @@ Execute the following to install all requirements:
 ```
 pip3 install -r requirements.txt
 ```
+<br>
+Structure should be followed before running the code-
+```
+./data/dataset
+./data/outputs
+./data/huggingface
 
+./models/model_folders
+```
 ### Dataset
 
 The dataset used in this study is available on [HuggingFace](https://huggingface.co/iidai). 
