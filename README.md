@@ -10,7 +10,7 @@ Execute the following to install all requirements:
 ```
 pip3 install -r requirements.txt
 ```
-<br>
+
 Structure should be followed before running the code-
 ```
 ./data/dataset
